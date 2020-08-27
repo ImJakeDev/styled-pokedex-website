@@ -1,40 +1,13 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
 
-import { useStaticQuery, graphql } from "gatsby";
+import usePokemon from 'hooks/usePokemon';
 
 import Layout from 'components/Layout';
 import Container from 'components/Container';
 
-// import img_gatsby from 'assets/images/gatsby-astronaut.png';
-
-const IndexPage = () => {
-  const data = useStaticQuery(graphql`
-    {
-      allPokemon {
-        nodes {
-          artist
-          id
-          imageUrlHiRes
-          name
-        }
-      }
-    }
-  `);
-  
-  const allPokemon = data.allPokemon.nodes.map((node) => {
-    const { artist, id, imageUrlHiRes, name } = node;
-
-    return {
-      artist,
-      id,
-      imageUrlHiRes,
-      name,
-    };
-  });
-
-  console.log('allPokemon', allPokemon);
-  
+const IndexPage = () => {  
+  const { pokemon: allPokemon } = usePokemon();
   
   return (
     <Layout pageName="home">
@@ -48,10 +21,10 @@ const IndexPage = () => {
             return (
               <li key={id}>
                 <h3>{name}</h3>
-                <img src={imageUrlHiRes} />
+                <img src={imageUrlHiRes} alt="Pokemon Cards!" />
                 <p>by: {artist}</p>
               </li>
-            )
+            );
           })}
         </ul>
         {/* <p className="gatsby-astronaut">
