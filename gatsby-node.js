@@ -11,16 +11,19 @@ exports.sourceNodes = async ({ actions, createNodeId, createContentDigest }) => 
     "https://api.pokemontcg.io/v1/cards"
   );
 
-  const json = await response.json();
+  const { cards = [] } = await response.json();
 
-  const { cards = [] } = json;
+  console.log('cards', cards);
+  
 
-  const pokemon = await Promise.all(
-    cards.map(async (result) => {
-      const pokeResponse = await result;
-      return await pokeResponse;
-    })
-  );
+  // const { cards = [] } = json;
+
+  // const pokemon = await Promise.all(
+  //   cards.map(async (result) => {
+  //     const pokeResponse = await result;
+  //     return await pokeResponse.json();;
+  //   })
+  // );
 
   // ------------------
 
@@ -42,7 +45,7 @@ exports.sourceNodes = async ({ actions, createNodeId, createContentDigest }) => 
 
   // ---------------------
 
-  pokemon.forEach((node, index) => {
+  cards.forEach((node, index) => {
     createNode({
       ...node,
       id: createNodeId(`${NODE_TYPE}-${node.id}`),
