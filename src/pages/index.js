@@ -1,10 +1,11 @@
-import React from 'react';
+import React from "react";
 import { Helmet } from 'react-helmet';
 
-import usePokemon from 'hooks/usePokemon';
+import usePokemon from "hooks/usePokemon";
 
 import Layout from 'components/Layout';
 import Container from 'components/Container';
+import CardEffect from "../components/cardEffect";
 
 const IndexPage = () => {  
   const { pokemon: allPokemon } = usePokemon();
@@ -16,17 +17,8 @@ const IndexPage = () => {
       </Helmet>
       <Container>
         <main>
-          <ul className="pokedex">
-            {allPokemon.map((pokemon, index) => {
-              const { artist, id, imageUrlHiRes, name } = pokemon;
-              return (
-                <li key={id}>
-                  <h3>{name}</h3>
-                  <img className="card" src={imageUrlHiRes} alt="Pokemon Cards!" />
-                  <p>by: {artist}</p>
-                </li>
-              );
-            })}
+          <ul className="pokeDex">
+            {allPokemon.map((pokemon, index) => <CardEffect key={index} pokemon={pokemon}/>)}
           </ul>
         </main>
       </Container>

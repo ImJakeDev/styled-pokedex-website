@@ -13,9 +13,6 @@ exports.sourceNodes = async ({ actions, createNodeId, createContentDigest }) => 
 
   const { cards = [] } = await response.json();
 
-  console.log('cards', cards);
-  
-
   // const { cards = [] } = json;
 
   // const pokemon = await Promise.all(
