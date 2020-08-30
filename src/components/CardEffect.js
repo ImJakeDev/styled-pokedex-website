@@ -1,16 +1,17 @@
-import React, { createRef } from "react";
+import React, { createRef, useState } from "react";
 
 const CardEffect = (props) => {
 
   const cardEl = createRef();
 
+  const card = "card";
+  const hoverCard = "hoverCard"
+
+  const [cardClass, setCardClass] = useState(card)
+
   const { id, imageUrlHiRes, name } = props.pokemon;
 
   const altText = `${name}'s Pokemon Card`
-
-
-  let card = "card";
-  let style = "hover";
 
   // const mouseMove = (e) => {
 
@@ -104,16 +105,20 @@ const CardEffect = (props) => {
 
   return (
     <li key={id} className="pokeCard">
-      <div
-        style={{ backgroundImage: `url("${imageUrlHiRes}")` }}
-        // onMouseEnter={mouseMove}
-        // // onMouseMove={mouseMove} // Sort of works
-        // onMouseLeave={mouseOut}
-        className={card}
-        alt={altText}
-        ref={cardEl}
-      ></div>
-      <style className={style}></style>
+      <a>
+        <div
+          style={{ backgroundImage: `url("${imageUrlHiRes}")` }}
+          onMouseEnter={() => {
+            setCardClass(hoverCard);
+          }}
+          onMouseLeave={() => {
+            setCardClass(card);
+          }}
+          className={cardClass}
+          alt={altText}
+          ref={cardEl}
+        ></div>
+      </a>
     </li>
   );
 };
