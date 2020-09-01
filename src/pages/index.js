@@ -5,7 +5,7 @@ import usePokemon from "hooks/usePokemon";
 
 import Layout from 'components/Layout';
 import Container from 'components/Container';
-import CardEffect from "../components/cardEffect";
+import CardEffect from "../components/CardEffect";
 
 const IndexPage = () => {  
   const { pokemon: allPokemon } = usePokemon();
