@@ -18,7 +18,7 @@ const IndexPage = () => {
       <Container>
         <main>
           <ul className="pokeDex">
-            {allPokemon.map((pokemon, index) => <CardEffect key={index} pokemon={pokemon}/>)}
+            {allPokemon.map((pokemon, index) => <CardEffect key={index} index={index} pokemon={pokemon}/>)}
           </ul>
         </main>
       </Container>

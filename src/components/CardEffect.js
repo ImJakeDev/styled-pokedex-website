@@ -6,8 +6,9 @@ const CardEffect = (props) => {
 
   const card = "card";
   const hoverCard = "hoverCard"
+  const pokemonCard = "pokemonCard";
 
-  const [cardClass, setCardClass] = useState(card)
+  const [cardClass, setCardClass] = useState(card);
 
   const { id, imageUrlHiRes, name } = props.pokemon;
 
@@ -104,8 +105,8 @@ const CardEffect = (props) => {
   // }
 
   return (
-    <li key={id} className="pokeCard">
-      <a>
+    <li key={props.index + id} className="pokeCard">
+      <div>
         <div
           style={{ backgroundImage: `url("${imageUrlHiRes}")` }}
           onMouseEnter={() => {
@@ -118,7 +119,7 @@ const CardEffect = (props) => {
           alt={altText}
           ref={cardEl}
         ></div>
-      </a>
+      </div>
     </li>
   );
 };
