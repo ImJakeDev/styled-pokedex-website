@@ -1,5 +1,5 @@
-$width-normal: 100px;
-$width-large: 300px;
+$width-normal: 160px;
+$width-large: 320px;
 
 .pokeCard {
   .card {
@@ -17,23 +17,22 @@ $width-large: 300px;
     overflow: hidden;
     display: inline-block;
     vertical-align: middle;
-    margin: auto;
+    margin: 20px 10px;
     animation: holoCard 15s ease infinite;
     animation: float 1.3s ease-in-out infinite;
     transform-style: preserve-3d;
     -webkit-transform-style: preserve-3d;
-    margin: 10px 5px;
     transition: transform 0.3s ease-out;
     transform: rotateY(0deg);
   }
 
   .hoverCard {
-    animation: none;
+    // animation: none;
     z-index: 1000;
 
     width: $width-large;
     height: calc(1.4 * #{$width-large});
-    position: relative;
+
     top: calc(
       (-1 * (1.4 * #{$width-large}) / 2) + ((1.4 * #{$width-normal}) / 2)
     );
@@ -47,10 +46,46 @@ $width-large: 300px;
     box-shadow: -3px -3px 3px 0 rgba(#26e6f7, 0.6),
       3px 3px 3px 0 rgba(#f759e4, 0.6), 0 0 6px 2px rgba(#ffe759, 0.6),
       0 35px 25px -15px rgba(0, 0, 0, 0.5);
+    position: relative;
     overflow: hidden;
     display: inline-block;
     vertical-align: middle;
-    margin: 0;
+    margin: 20px 10px;
+    animation: holoCard 15s ease infinite;
+
+    &:before,
+    &:after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      top: 0;
+      background-image: linear-gradient(
+        115deg,
+        transparent 0%,
+        rgb(0, 231, 255) 30%,
+        rgb(255, 0, 231) 70%,
+        transparent 100%
+      );
+      background-position: 0% 0%;
+      background-repeat: no-repeat;
+      background-size: 300% 300%;
+      mix-blend-mode: color-dodge;
+      opacity: 0.2;
+      z-index: 1;
+      animation: holoGradient 15s ease infinite;
+    }
+
+    &:after {
+      background-image: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/13471/sparkles.gif") !important;
+      background-position: center;
+      background-size: 180%;
+      mix-blend-mode: color-dodge;
+      opacity: 1;
+      z-index: 2;
+      animation: holoSparkle 15s ease infinite;
+    }
   }
 
   .card:before,
@@ -85,26 +120,6 @@ $width-large: 300px;
     opacity: 1;
     z-index: 2;
     animation: holoSparkle 15s ease infinite;
-  }
-
-  .card.active:before {
-    opacity: 1;
-    animation: none;
-    transition: none;
-    background-image: linear-gradient(
-      115deg,
-      transparent 0%,
-      transparent 25%,
-      rgba(0, 231, 255, 0.7) 45%,
-      rgba(255, 0, 231, 0.7) 55%,
-      transparent 70%,
-      transparent 100%
-    );
-  }
-
-  .card.active:before,
-  .card.active:after {
-    animation: none;
   }
 
   // ------------------------------

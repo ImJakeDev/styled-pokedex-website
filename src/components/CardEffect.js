@@ -105,7 +105,10 @@ const CardEffect = (props) => {
   // }
 
   return (
-    <li key={props.index + id} className="pokeCard">
+    <li
+      key={props.index + id}
+      className="pokeCard"
+    >
       <div>
         <div
           style={{ backgroundImage: `url("${imageUrlHiRes}")` }}
