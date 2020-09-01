@@ -24,13 +24,13 @@
   ],
   "license": "MIT",
   "scripts": {
-    "build": "gatsby build",
+    "build": "GATSBY_EXPERIMENTAL_PAGE_BUILD_ON_DATA_CHANGES=true gatsby build --log-pages",
     "develop": "gatsby develop",
-    "lint": "Get started linting your code with Eslint and stylelint",
-    "format": "Get started formatting your code with Eslint, Prettier, and stylelint",
-    "start": "npm run build",
+    "format": "prettier --write \"**/*.{js,jsx,json,md}\"",
+    "start": "npm run develop",
     "serve": "gatsby serve",
-    "test": "echo 'Write tests! -> https://gatsby.dev/unit-testing'"
+    "clean": "gatsby clean",
+    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1"
   },
   "repository": {
     "type": "git",
