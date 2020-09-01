@@ -16,11 +16,11 @@ const IndexPage = () => {
         <title>Home Page</title>
       </Helmet>
       <Container>
-        <main>
+        <div>
           <ul className="pokeDex">
             {allPokemon.map((pokemon, index) => <CardEffect key={index} index={index} pokemon={pokemon}/>)}
           </ul>
-        </main>
+        </div>
       </Container>
     </Layout>
   );
